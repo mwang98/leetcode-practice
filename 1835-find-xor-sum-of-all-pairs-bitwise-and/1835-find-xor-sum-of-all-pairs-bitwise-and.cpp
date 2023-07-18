@@ -14,8 +14,8 @@ public:
         */
         int xor_1 = 0, xor_2 = 0;
 
-        for(const auto& num: arr1) xor_1 = xor_1 ^ num;
-        for(const auto& num: arr2) xor_2 = xor_2 ^ num;
+        for(auto& num: arr1) xor_1 = xor_1 ^ num;
+        for(auto& num: arr2) xor_2 = xor_2 ^ num;
 
         return xor_1 & xor_2;
     }
