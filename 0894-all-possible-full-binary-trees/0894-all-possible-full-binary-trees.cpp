@@ -22,16 +22,6 @@ using namespace std;
 class Solution {
    public:
     unordered_map<int, vector<TreeNode*>> cache;
-    auto duplicate_tree(TreeNode* node) -> TreeNode* {
-        // Base case
-        if (node == nullptr) return nullptr;
-        // Recursive case
-        TreeNode* dup = new TreeNode();
-        dup->left = duplicate_tree(node->left);
-        dup->right = duplicate_tree(node->right);
-        return dup;
-    }
-
     vector<TreeNode*> allPossibleFBT(int n) {
         // Base case
         if (n == 1) return {new TreeNode()};
@@ -45,13 +35,13 @@ class Solution {
             for(const auto& l_root: l_roots){
                 for(const auto& r_root: r_roots){
                     TreeNode* root = new TreeNode();
-                    root->left = duplicate_tree(l_root);
-                    root->right = duplicate_tree(r_root);
+                    root->left = l_root;
+                    root->right = r_root;
                     ret.push_back(root);
                 }
             }
         }
-        return cache[n] = ret;
+        return cache[n] = move(ret);
     }
 };
 // @lc code=end
