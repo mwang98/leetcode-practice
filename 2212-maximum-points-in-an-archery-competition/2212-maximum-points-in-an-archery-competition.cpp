@@ -9,7 +9,7 @@ public:
             Transition:
                 dp[i][c] = max(dp[i-1][c], gain[i] + dp[i-1][c-cost[i]])
         */
-        auto& costs = aliceArrows;
+        // auto& costs = aliceArrows;
         vector<int> ret(12);
         int trace[12][100001];
         int dp[12][100001];
@@ -18,7 +18,7 @@ public:
 
 
         for(int i = 1 ; i < 12 ; ++i){
-            auto cost = costs[i] + 1;
+            auto cost = aliceArrows[i] + 1;
 
             for(int credit = 0 ; credit <= numArrows ; ++credit){
                 dp[i][credit] = dp[i - 1][credit];
@@ -34,7 +34,7 @@ public:
 
         int credit = numArrows;
         for(int i = 11 ; i >= 0 ; --i){
-            auto cost = costs[i] + 1;
+            auto cost = aliceArrows[i] + 1;
             
             if(trace[i][credit]){
                 ret[i] = cost;
