@@ -8,7 +8,7 @@ public:
     int maximumGain(string s, int x, int y) {
         s += 'z'; // signal to clear whole stack
         int gain = 0;
-        vector<char> stack;
+        vector<char> stack, tmp_stack;
 
         Type greedy = x > y ? Type::AB : Type::BA;
         int min_point = x > y ? y : x;
@@ -17,13 +17,13 @@ public:
         for(auto ch: s){
             // Clear stack
             if(ch != 'a' && ch != 'b'){
-                vector<char> tmp_stack;
                 for(auto ch: stack){
                     if(!tmp_stack.empty() && ch != tmp_stack.back()){
                         gain += min_point;
                         tmp_stack.pop_back();
                     } else tmp_stack.push_back(ch);
                 }
+                tmp_stack.clear();
                 stack.clear();
                 continue;
             }
