@@ -9,6 +9,7 @@ public:
         */
         int num_ops = 0;
         vector<int> stack;
+        stack.reserve(target.size());
 
         target.push_back(0); // clear all stack
 
