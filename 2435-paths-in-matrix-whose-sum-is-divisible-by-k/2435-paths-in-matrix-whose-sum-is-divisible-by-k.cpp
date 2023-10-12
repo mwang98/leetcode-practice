@@ -11,7 +11,9 @@ public:
         // Define dp table & variables
         int n_rows = grid.size(), n_cols = grid[0].size();
         int MOD = 1e9 + 7;
-        vector<vector<vector<int>>> dp(n_rows, vector<vector<int>>(n_cols, vector<int>(k, 0)));
+        // vector<vector<vector<int>>> dp(n_rows, vector<vector<int>>(n_cols, vector<int>(k, 0)));
+        int dp[n_rows][n_cols][k];
+        memset(dp, 0, sizeof(dp));
 
         // Initialize dp table
         dp[0][0][ grid[0][0] % k ] = 1;
